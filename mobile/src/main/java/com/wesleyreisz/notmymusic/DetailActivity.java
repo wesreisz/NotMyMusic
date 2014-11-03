@@ -15,6 +15,9 @@ import android.os.Build;
 import android.widget.Toast;
 
 import com.wesleyreisz.notmymusic.fragment.AddFragment;
+import com.wesleyreisz.notmymusic.fragment.DetailsFragment;
+import com.wesleyreisz.notmymusic.fragment.EventsFragment;
+import com.wesleyreisz.notmymusic.fragment.MoreSongsFragment;
 import com.wesleyreisz.notmymusic.fragment.PlaceholderFragment;
 import com.wesleyreisz.notmymusic.listener.MyTabListener;
 
@@ -31,15 +34,15 @@ public class DetailActivity extends Activity {
         actionbar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
         ActionBar.Tab tab1 = actionbar.newTab().setText("Details");
-        tab1.setTabListener(new MyTabListener());
+        tab1.setTabListener(new MyTabListener(new DetailsFragment()));
         actionbar.addTab(tab1);
 
         ActionBar.Tab tab2 = actionbar.newTab().setText("More Music");
-        tab2.setTabListener(new MyTabListener());
+        tab2.setTabListener(new MyTabListener(new MoreSongsFragment()));
         actionbar.addTab(tab2);
 
         ActionBar.Tab tab3 = actionbar.newTab().setText("Events");
-        tab3.setTabListener(new MyTabListener());
+        tab3.setTabListener(new MyTabListener(new EventsFragment()));
         actionbar.addTab(tab3);
     }
 
