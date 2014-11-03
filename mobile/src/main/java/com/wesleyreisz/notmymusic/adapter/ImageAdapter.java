@@ -11,15 +11,20 @@ import android.widget.ListAdapter;
 
 import com.wesleyreisz.notmymusic.R;
 import com.wesleyreisz.notmymusic.fragment.MusicGridFragment;
+import com.wesleyreisz.notmymusic.model.Song;
+
+import java.util.List;
 
 /**
  * Created by wesleyreisz on 11/2/14.
  */
 public class ImageAdapter extends BaseAdapter {
     private Context mContext;
+    private List<Song> mSongList;
 
-    public ImageAdapter(Context c) {
+    public ImageAdapter(Context c, List<Song> songList) {
         mContext = c;
+        mSongList = songList;
     }
 
     public int getCount() {
@@ -39,7 +44,7 @@ public class ImageAdapter extends BaseAdapter {
         ImageView imageView;
         if (convertView == null) {  // if it's not recycled, initialize some attributes
             imageView = new ImageView(mContext);
-            imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
+            imageView.setLayoutParams(new GridView.LayoutParams(185, 185));
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             imageView.setPadding(8, 8, 8, 8);
         } else {
