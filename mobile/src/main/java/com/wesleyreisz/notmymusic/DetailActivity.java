@@ -5,6 +5,7 @@ import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,7 +19,7 @@ import com.wesleyreisz.notmymusic.fragment.PlaceholderFragment;
 import com.wesleyreisz.notmymusic.listener.MyTabListener;
 
 
-public class MainActivity extends Activity {
+public class DetailActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,17 +27,18 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         ActionBar actionbar = getActionBar();
+        actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-        ActionBar.Tab tab1 = actionbar.newTab().setText("Tab 1");
+        ActionBar.Tab tab1 = actionbar.newTab().setText("Details");
         tab1.setTabListener(new MyTabListener());
         actionbar.addTab(tab1);
 
-        ActionBar.Tab tab2 = actionbar.newTab().setText("Tab 2");
+        ActionBar.Tab tab2 = actionbar.newTab().setText("More Music");
         tab2.setTabListener(new MyTabListener());
         actionbar.addTab(tab2);
 
-        ActionBar.Tab tab3 = actionbar.newTab().setText("Tab 3");
+        ActionBar.Tab tab3 = actionbar.newTab().setText("Events");
         tab3.setTabListener(new MyTabListener());
         actionbar.addTab(tab3);
     }
@@ -57,27 +59,11 @@ public class MainActivity extends Activity {
         int id = item.getItemId();
         switch (id){
             case R.id.action_settings: settings(); return true;
-            case R.id.action_search: search(); return true;
-            case R.id.action_add: add(); return true;
+            case android.R.id.home: NavUtils.navigateUpFromSameTask(this); return true;
+            default : return false;
         }
 
-        /*
-        if (id == R.id.action_settings) {
-
-            return true;
-        }
-        */
-        return super.onOptionsItemSelected(item);
-    }
-
-    private void add() {
-        Toast toast = Toast.makeText(this, "Adding", Toast.LENGTH_SHORT);
-        toast.show();
-    }
-
-    private void search() {
-        Toast toast = Toast.makeText(this, "Search", Toast.LENGTH_SHORT);
-        toast.show();
+        //return super.onOptionsItemSelected(item);
     }
 
     private void settings() {

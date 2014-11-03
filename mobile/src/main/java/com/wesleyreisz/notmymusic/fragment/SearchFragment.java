@@ -9,13 +9,13 @@ import android.view.ViewGroup;
 import com.wesleyreisz.notmymusic.R;
 
 /**
- * Created by wesleyreisz on 10/27/14.
+ * Created by wesleyreisz on 11/2/14.
  */
-public class AddFragment extends Fragment {
+public class SearchFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_add, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_search, container, false);
         return rootView;
     }
 }
