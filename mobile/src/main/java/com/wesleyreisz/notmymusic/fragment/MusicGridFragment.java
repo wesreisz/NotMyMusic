@@ -18,10 +18,8 @@ import com.wesleyreisz.notmymusic.GlobalState;
 import com.wesleyreisz.notmymusic.R;
 import com.wesleyreisz.notmymusic.adapter.ImageAdapter;
 import com.wesleyreisz.notmymusic.model.Song;
-import com.wesleyreisz.notmymusic.utils.HttpUtil;
-import com.wesleyreisz.notmymusic.utils.SongUtil;
-
-import org.apache.http.protocol.HTTP;
+import com.wesleyreisz.notmymusic.util.HttpUtil;
+import com.wesleyreisz.notmymusic.util.SongUtil;
 
 import java.util.List;
 

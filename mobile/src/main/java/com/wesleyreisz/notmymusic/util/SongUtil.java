@@ -1,4 +1,4 @@
-package com.wesleyreisz.notmymusic.utils;
+package com.wesleyreisz.notmymusic.util;
 
 import com.wesleyreisz.notmymusic.Constants;
 import com.wesleyreisz.notmymusic.model.Song;

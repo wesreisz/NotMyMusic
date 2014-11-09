@@ -1,4 +1,4 @@
-package com.wesleyreisz.notmymusic.utils;
+package com.wesleyreisz.notmymusic.util;
 
 import android.util.Log;
 
