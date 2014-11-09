@@ -16,7 +16,7 @@ import com.wesleyreisz.notmymusic.Constants;
 import com.wesleyreisz.notmymusic.DetailActivity;
 import com.wesleyreisz.notmymusic.GlobalState;
 import com.wesleyreisz.notmymusic.R;
-import com.wesleyreisz.notmymusic.adapter.ImageAdapter;
+import com.wesleyreisz.notmymusic.adapter.SongGridViewAdapter;
 import com.wesleyreisz.notmymusic.model.Song;
 import com.wesleyreisz.notmymusic.util.HttpUtil;
 import com.wesleyreisz.notmymusic.util.SongUtil;
@@ -68,7 +68,7 @@ public class MusicGridFragment extends Fragment {
             List<Song> songList = SongUtil.mapSongs(strJson);
             globalState.setSongListTopTen(songList);
 
-            gridviewMusic.setAdapter(new ImageAdapter(getActivity(), songList));
+            gridviewMusic.setAdapter(new SongGridViewAdapter(getActivity(), R.layout.item_grid, songList));
             gridviewMusic.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                     Toast.makeText(getActivity(), "" + position, Toast.LENGTH_SHORT).show();
