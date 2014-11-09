@@ -15,7 +15,6 @@ import android.widget.TextView;
 
 import com.wesleyreisz.notmymusic.Constants;
 import com.wesleyreisz.notmymusic.R;
-import com.wesleyreisz.notmymusic.model.ImageContainer;
 import com.wesleyreisz.notmymusic.model.ImageSize;
 import com.wesleyreisz.notmymusic.model.Song;
 import com.wesleyreisz.notmymusic.util.HttpUtil;
