@@ -92,7 +92,9 @@ public class SongGridViewAdapter extends BaseAdapter {
         String imageToDownload = mSongList.get(position).getImages()[ImageSize.LARGE];
 
         if (imageToDownload!=null && imageToDownload.length()>0){
-            new Thread(new DownloadImages(imageToDownload,position)).start();
+            ExecutorService executorService = Executors.newFixedThreadPool(Constants.TREAD_POOL_SIZE);
+            executorService.execute(new DownloadImages(imageToDownload, position));
+
         }
 
         return item;
