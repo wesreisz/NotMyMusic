@@ -17,4 +17,6 @@ public class Constants {
 
     public static final String GETTING_ITUNES_MESSAGE = "Getting ITunes Top 10";
     public static final String NO_CONNECTION_MESSAGE="No Data Found. Check network connection.";
+
+    public static final String POSITION = "position";
 }

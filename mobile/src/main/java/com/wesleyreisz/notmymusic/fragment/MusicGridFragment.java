@@ -80,8 +80,8 @@ public class MusicGridFragment extends Fragment {
             gridviewMusic.setAdapter(new SongGridViewAdapter(getActivity(), R.layout.item_grid, songList));
             gridviewMusic.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                    Toast.makeText(getActivity(), "" + position, Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getActivity(), DetailActivity.class);
+                    intent.putExtra(Constants.POSITION, position);
                     startActivity(intent);
                 }
             });
