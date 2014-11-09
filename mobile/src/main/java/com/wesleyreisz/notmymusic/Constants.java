@@ -7,7 +7,7 @@ public class Constants {
     public static final String APP = "NOT_MY_MUSIC";
 
     public static final String HTTPS_ITUNES_APPLE_COM_US_RSS_TOPSONGS =
-            "https://itunes.apple.com/us/rss/topsongs/limit=10/json";
+            "https://itunes.apple.com/us/rss/topsongs/limit=100/json";
     public static final String RSS_FEED_SONG_NAME = "im:name";
     public static final String RSS_FEED_ARTIST_NAME = "im:artist";
     public static final String RSS_FEED_RELEASE_DATE = "im:releaseDate";

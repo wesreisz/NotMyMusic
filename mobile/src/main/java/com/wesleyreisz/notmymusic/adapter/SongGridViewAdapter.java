@@ -73,6 +73,8 @@ public class SongGridViewAdapter extends BaseAdapter {
             item = inflater.inflate(mLayoutResourceId, parent, false);
         }
 
+        Song song = mSongList.get(position);
+
         ImageView imageView;
         TextView textView;
 
@@ -83,19 +85,21 @@ public class SongGridViewAdapter extends BaseAdapter {
         //create a hashmap of these views so I can update after the thread completes
         views.put(String.valueOf(position), imageView);
 
+        String imageToDownload = song.getImages()[ImageSize.LARGE];
+        if (imageToDownload!=null && imageToDownload.length()>0){
+            if(song.getImage()==null) {
+                ExecutorService executorService = Executors.newFixedThreadPool(Constants.TREAD_POOL_SIZE);
+                executorService.execute(new DownloadImages(imageToDownload, position));
+            }else{
+                imageView.setImageBitmap(song.getImage());
+            }
+        }
+
         textView = (TextView) item.findViewById(R.id.item_song_text);
-        textView.setText((position + 1) + ".) " + mSongList.get(position).getTitle());
+        textView.setText((position + 1) + ".) " + song.getTitle());
 
         textView = (TextView) item.findViewById(R.id.item_artist_text);
-        textView.setText(mSongList.get(position).getArtist());
-
-        String imageToDownload = mSongList.get(position).getImages()[ImageSize.LARGE];
-
-        if (imageToDownload!=null && imageToDownload.length()>0){
-            ExecutorService executorService = Executors.newFixedThreadPool(Constants.TREAD_POOL_SIZE);
-            executorService.execute(new DownloadImages(imageToDownload, position));
-
-        }
+        textView.setText(song.getArtist());
 
         return item;
     }
