@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wesleyreisz.notmymusic.Constants;
@@ -27,8 +28,9 @@ import java.util.List;
  * Created by wesleyreisz on 11/2/14.
  */
 public class MusicGridFragment extends Fragment {
-    GlobalState globalState;
-    GridView gridviewMusic;
+    private GlobalState globalState;
+    private GridView gridviewMusic;
+    private TextView mMessages;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,6 +43,7 @@ public class MusicGridFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         gridviewMusic = (GridView) getActivity().findViewById(R.id.gridviewMusic);
+        mMessages = (TextView) getActivity().findViewById(R.id.txtViewMessage);
 
         new GetITunesTopTenAsyncTask().execute(Constants.HTTPS_ITUNES_APPLE_COM_US_RSS_TOPSONGS);
     }
@@ -49,7 +52,7 @@ public class MusicGridFragment extends Fragment {
 
         @Override
         protected void onPreExecute() {
-            Toast toast = Toast.makeText(getActivity(),"Getting ITunes Top 10", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(getActivity(), Constants.GETTING_ITUNES_MESSAGE, Toast.LENGTH_SHORT);
             toast.show();
         }
 
@@ -68,6 +71,12 @@ public class MusicGridFragment extends Fragment {
             List<Song> songList = SongUtil.mapSongs(strJson);
             globalState.setSongListTopTen(songList);
 
+            //set message
+            if(songList.size()<=0){
+                mMessages.setText(Constants.NO_CONNECTION_MESSAGE);
+                Toast toast = Toast.makeText(getActivity(),Constants.NO_CONNECTION_MESSAGE, Toast.LENGTH_SHORT);
+                toast.show();
+            }
             gridviewMusic.setAdapter(new SongGridViewAdapter(getActivity(), R.layout.item_grid, songList));
             gridviewMusic.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 public void onItemClick(AdapterView<?> parent, View v, int position, long id) {

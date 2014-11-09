@@ -14,4 +14,7 @@ public class Constants {
     public static final String RSS_FEED_IMAGES = "im:image";
     public static final String RSS_FEED_COLLECTION = "im:collection";
     public static final String RSS_FEED_COLLECTION_NAME = "im:name";
+
+    public static final String GETTING_ITUNES_MESSAGE = "Getting ITunes Top 10";
+    public static final String NO_CONNECTION_MESSAGE="No Data Found. Check network connection.";
 }
