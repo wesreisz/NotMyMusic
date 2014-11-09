@@ -2,6 +2,7 @@ package com.wesleyreisz.notmymusic.fragment;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,11 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wesleyreisz.notmymusic.Constants;
-import com.wesleyreisz.notmymusic.DetailActivity;
+import com.wesleyreisz.notmymusic.activity.DetailActivity;
 import com.wesleyreisz.notmymusic.GlobalState;
 import com.wesleyreisz.notmymusic.R;
 import com.wesleyreisz.notmymusic.adapter.SongGridViewAdapter;
@@ -28,9 +30,17 @@ import java.util.List;
  * Created by wesleyreisz on 11/2/14.
  */
 public class MusicGridFragment extends Fragment {
+    private static final String TAG = "MusicGrid";
     private GlobalState globalState;
     private GridView gridviewMusic;
     private TextView mMessages;
+
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -77,12 +87,14 @@ public class MusicGridFragment extends Fragment {
                 Toast toast = Toast.makeText(getActivity(),Constants.NO_CONNECTION_MESSAGE, Toast.LENGTH_SHORT);
                 toast.show();
             }
-            gridviewMusic.setAdapter(new SongGridViewAdapter(getActivity(), R.layout.item_grid, songList));
+            gridviewMusic.setAdapter(
+                new SongGridViewAdapter(getActivity(), R.layout.item_grid, songList)
+            );
             gridviewMusic.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                    Intent intent = new Intent(getActivity(), DetailActivity.class);
-                    intent.putExtra(Constants.POSITION, position);
-                    startActivity(intent);
+                Intent intent = new Intent(getActivity(), DetailActivity.class);
+                intent.putExtra(Constants.POSITION, position);
+                startActivity(intent);
                 }
             });
         }

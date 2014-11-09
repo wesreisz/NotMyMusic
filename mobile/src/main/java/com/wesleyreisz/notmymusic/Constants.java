@@ -19,4 +19,5 @@ public class Constants {
     public static final String NO_CONNECTION_MESSAGE="No Data Found. Check network connection.";
 
     public static final String POSITION = "position";
+    public static final int TREAD_POOL_SIZE = 10;
 }

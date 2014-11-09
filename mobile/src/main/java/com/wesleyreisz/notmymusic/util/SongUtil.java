@@ -26,7 +26,7 @@ public class SongUtil {
                 song.setTitle(getItem(entryObjects, Constants.RSS_FEED_SONG_NAME));
                 song.setArtist(getItem(entryObjects, Constants.RSS_FEED_ARTIST_NAME));
                 song.setReleaseDate(getItem(entryObjects, Constants.RSS_FEED_RELEASE_DATE));
-                song.setImage(getItems(entryObjects, Constants.RSS_FEED_IMAGES));
+                song.setImages(getItems(entryObjects, Constants.RSS_FEED_IMAGES));
                 song.setAlbum(getItemFromCollection(entryObjects,Constants.RSS_FEED_COLLECTION,Constants.RSS_FEED_COLLECTION_NAME));
 
                 songs.add(song);

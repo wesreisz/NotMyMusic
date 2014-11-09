@@ -1,4 +1,4 @@
-package com.wesleyreisz.notmymusic;
+package com.wesleyreisz.notmymusic.activity;
 
 import android.app.Activity;
 import android.app.ActionBar;
@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.os.Build;
 import android.widget.Toast;
 
+import com.wesleyreisz.notmymusic.R;
 import com.wesleyreisz.notmymusic.fragment.AddFragment;
 import com.wesleyreisz.notmymusic.fragment.MusicGridFragment;
 import com.wesleyreisz.notmymusic.fragment.SearchFragment;
