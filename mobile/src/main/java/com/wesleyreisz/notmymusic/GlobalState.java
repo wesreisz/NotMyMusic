@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.wesleyreisz.notmymusic.model.Song;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,6 +21,7 @@ public class GlobalState extends Application {
     public void onCreate() {
         super.onCreate();
         singleton = this;
+        singleton.songListTopTen = new ArrayList<Song>();
     }
 
     private List<Song> songListTopTen;

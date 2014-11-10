@@ -53,7 +53,12 @@ public class MusicGridFragment extends Fragment {
         gridviewMusic = (GridView) getActivity().findViewById(R.id.gridviewMusic);
         mMessages = (TextView) getActivity().findViewById(R.id.txtViewMessage);
 
-        new GetITunesTopTenAsyncTask().execute(Constants.HTTPS_ITUNES_APPLE_COM_US_RSS_TOPSONGS);
+        if (globalState.getSongListTopTen().size()<=0) {
+            Log.d(TAG, Constants.GETTING_ITUNES_MESSAGE);
+            new GetITunesTopTenAsyncTask().execute(Constants.HTTPS_ITUNES_APPLE_COM_US_RSS_TOPSONGS);
+        }else{
+            populateGridView(globalState.getSongListTopTen());
+        }
     }
 
     private class GetITunesTopTenAsyncTask extends AsyncTask<String, Void, String>{
@@ -78,23 +83,25 @@ public class MusicGridFragment extends Fragment {
             Log.d(Constants.APP, strJson);
             List<Song> songList = SongUtil.mapSongs(strJson);
             globalState.setSongListTopTen(songList);
+            populateGridView(songList);
+        }
+    }
 
-            //set message
-            if(songList.size()<=0){
-                mMessages.setText(Constants.NO_CONNECTION_MESSAGE);
-                Toast toast = Toast.makeText(getActivity(),Constants.NO_CONNECTION_MESSAGE, Toast.LENGTH_SHORT);
-                toast.show();
-            }
-            gridviewMusic.setAdapter(
+    private void populateGridView(List<Song> songList) {
+        if(songList.size()<=0){
+            mMessages.setText(Constants.NO_CONNECTION_MESSAGE);
+            Toast toast = Toast.makeText(getActivity(),Constants.NO_CONNECTION_MESSAGE, Toast.LENGTH_SHORT);
+            toast.show();
+        }
+        gridviewMusic.setAdapter(
                 new SongGridViewAdapter(getActivity(), R.layout.item_grid, songList)
-            );
-            gridviewMusic.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+        );
+        gridviewMusic.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 Intent intent = new Intent(getActivity(), DetailActivity.class);
                 intent.putExtra(Constants.POSITION, position);
                 startActivity(intent);
-                }
-            });
-        }
+            }
+        });
     }
 }
