@@ -15,9 +15,9 @@ public class Constants {
     public static final String RSS_FEED_COLLECTION = "im:collection";
     public static final String RSS_FEED_COLLECTION_NAME = "im:name";
 
-    public static final String GETTING_ITUNES_MESSAGE = "Getting ITunes Top 10";
+    public static final String GETTING_ITUNES_MESSAGE = "Getting ITunes Music List";
     public static final String NO_CONNECTION_MESSAGE="No Data Found. Check network connection.";
 
     public static final String POSITION = "position";
-    public static final int TREAD_POOL_SIZE = 10;
+    public static final int TREAD_POOL_SIZE = 5;
 }
