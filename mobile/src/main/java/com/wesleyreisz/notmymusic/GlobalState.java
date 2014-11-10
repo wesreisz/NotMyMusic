@@ -21,16 +21,16 @@ public class GlobalState extends Application {
     public void onCreate() {
         super.onCreate();
         singleton = this;
-        singleton.songListTopTen = new ArrayList<Song>();
+        singleton.songList = new ArrayList<Song>();
     }
 
-    private List<Song> songListTopTen;
+    private List<Song> songList;
 
-    public List<Song> getSongListTopTen() {
-        return songListTopTen;
+    public List<Song> getSongList() {
+        return songList;
     }
 
-    public void setSongListTopTen(List<Song> songListTopTen) {
-        this.songListTopTen = songListTopTen;
+    public void setSongList(List<Song> songList) {
+        this.songList = songList;
     }
 }

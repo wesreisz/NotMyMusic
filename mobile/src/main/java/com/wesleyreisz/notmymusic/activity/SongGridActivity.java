@@ -14,11 +14,15 @@ import android.view.ViewGroup;
 import android.os.Build;
 import android.widget.Toast;
 
+import com.wesleyreisz.notmymusic.GlobalState;
 import com.wesleyreisz.notmymusic.R;
 import com.wesleyreisz.notmymusic.fragment.AddFragment;
 import com.wesleyreisz.notmymusic.fragment.MusicGridFragment;
 import com.wesleyreisz.notmymusic.fragment.SearchFragment;
 import com.wesleyreisz.notmymusic.listener.MyTabListener;
+import com.wesleyreisz.notmymusic.model.Song;
+
+import java.util.ArrayList;
 
 
 public class SongGridActivity extends Activity {
@@ -52,31 +56,27 @@ public class SongGridActivity extends Activity {
         int id = item.getItemId();
         switch (id){
             case R.id.action_settings: settings(); return true;
-            case R.id.action_search: search(); return true;
-            case R.id.action_add: add(); return true;
+            case R.id.action_refresh: refresh(); return true;
             case android.R.id.home: home(); return true;
 
             default : return false;
         }
     }
 
+    private void refresh() {
+        GlobalState globalState = GlobalState.getInstance();
+        globalState.setSongList(new ArrayList<Song>());
+        getFragmentManager().beginTransaction()
+            .replace(R.id.container, new MusicGridFragment())
+            .commit();
+    }
+
     private void home() {
         getFragmentManager().beginTransaction()
-                .replace(R.id.container, new MusicGridFragment())
-                .commit();
-    }
-
-    private void add() {
-        getFragmentManager().beginTransaction()
-            .replace(R.id.container, new AddFragment())
+            .replace(R.id.container, new MusicGridFragment())
             .commit();
     }
 
-    private void search() {
-        getFragmentManager().beginTransaction()
-            .replace(R.id.container, new SearchFragment())
-            .commit();
-    }
 
     private void settings() {
         Toast toast = Toast.makeText(this, "Settings", Toast.LENGTH_SHORT);

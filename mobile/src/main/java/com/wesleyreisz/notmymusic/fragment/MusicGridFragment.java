@@ -53,11 +53,11 @@ public class MusicGridFragment extends Fragment {
         gridviewMusic = (GridView) getActivity().findViewById(R.id.gridviewMusic);
         mMessages = (TextView) getActivity().findViewById(R.id.txtViewMessage);
 
-        if (globalState.getSongListTopTen().size()<=0) {
+        if (globalState.getSongList().size()<=0) {
             Log.d(TAG, Constants.GETTING_ITUNES_MESSAGE);
             new GetITunesTopTenAsyncTask().execute(Constants.HTTPS_ITUNES_APPLE_COM_US_RSS_TOPSONGS);
         }else{
-            populateGridView(globalState.getSongListTopTen());
+            populateGridView(globalState.getSongList());
         }
     }
 
@@ -82,7 +82,7 @@ public class MusicGridFragment extends Fragment {
         protected void onPostExecute(String strJson) {
             Log.d(Constants.APP, strJson);
             List<Song> songList = SongUtil.mapSongs(strJson);
-            globalState.setSongListTopTen(songList);
+            globalState.setSongList(songList);
             populateGridView(songList);
         }
     }

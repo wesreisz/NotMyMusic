@@ -1,7 +1,6 @@
 package com.wesleyreisz.notmymusic.fragment;
 
 import android.app.Fragment;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,7 +35,7 @@ public class DetailsFragment extends Fragment {
         Bundle extras = getActivity().getIntent().getExtras();
         if(extras != null && mGlobalState != null){
             position = extras.getInt(Constants.POSITION);
-            Song song = mGlobalState.getSongListTopTen().get(position);
+            Song song = mGlobalState.getSongList().get(position);
             TextView songTitle = (TextView) getActivity().findViewById(R.id.textViewSongTitle);
             songTitle.setText(song.getTitle());
 
