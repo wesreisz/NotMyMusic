@@ -27,6 +27,8 @@ import java.util.ArrayList;
 
 public class SongGridActivity extends Activity {
 
+    public static final String MESSAGE_KEY = "message";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
