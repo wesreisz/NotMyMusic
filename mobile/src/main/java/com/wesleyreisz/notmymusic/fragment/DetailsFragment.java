@@ -1,6 +1,7 @@
 package com.wesleyreisz.notmymusic.fragment;
 
 import android.app.Fragment;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,9 +9,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.echonest.api.v4.Artist;
+import com.echonest.api.v4.EchoNestException;
 import com.wesleyreisz.notmymusic.Constants;
 import com.wesleyreisz.notmymusic.GlobalState;
 import com.wesleyreisz.notmymusic.R;
+import com.wesleyreisz.notmymusic.core.ArtistService;
 import com.wesleyreisz.notmymusic.model.Song;
 
 /**
@@ -36,6 +40,7 @@ public class DetailsFragment extends Fragment {
         if(extras != null && mGlobalState != null){
             position = extras.getInt(Constants.POSITION);
             Song song = mGlobalState.getSongList().get(position);
+
             TextView songTitle = (TextView) getActivity().findViewById(R.id.textViewSongTitle);
             songTitle.setText(song.getTitle());
 
@@ -53,5 +58,6 @@ public class DetailsFragment extends Fragment {
 
         }
     }
+
 }
 

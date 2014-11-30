@@ -20,9 +20,11 @@ import com.wesleyreisz.notmymusic.fragment.AddFragment;
 import com.wesleyreisz.notmymusic.fragment.MusicGridFragment;
 import com.wesleyreisz.notmymusic.fragment.SearchFragment;
 import com.wesleyreisz.notmymusic.listener.MyTabListener;
+import com.wesleyreisz.notmymusic.model.ArtistCache;
 import com.wesleyreisz.notmymusic.model.Song;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class SongGridActivity extends Activity {
@@ -68,6 +70,8 @@ public class SongGridActivity extends Activity {
     private void refresh() {
         GlobalState globalState = GlobalState.getInstance();
         globalState.setSongList(new ArrayList<Song>());
+        globalState.setArtistMap(new HashMap<String, ArtistCache>());
+
         getFragmentManager().beginTransaction()
             .replace(R.id.container, new MusicGridFragment())
             .commit();

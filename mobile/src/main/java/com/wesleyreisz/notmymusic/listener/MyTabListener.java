@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.wesleyreisz.notmymusic.R;
+import com.wesleyreisz.notmymusic.fragment.BioFragment;
 import com.wesleyreisz.notmymusic.fragment.DetailsFragment;
 import com.wesleyreisz.notmymusic.fragment.MoreSongsFragment;
 
@@ -33,7 +34,7 @@ public class MyTabListener implements ActionBar.TabListener{
             Log.d("TEST", "Loading detailsfragment");
             fm = (FrameLayout)mActivity.findViewById(R.id.containerMore);
             fm.setVisibility(View.VISIBLE);
-            moreFragment = new MoreSongsFragment();
+            moreFragment = new BioFragment();
             ft.replace(R.id.containerMore, moreFragment);
         }
     }
