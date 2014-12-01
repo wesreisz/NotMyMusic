@@ -121,14 +121,6 @@ public class EventsFragment extends Fragment {
                     marker.snippet(event.getShortTitle());
                     map.addMarker(marker);
 
-                    map.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-                        @Override
-                        public boolean onMarkerClick(Marker marker) {
-                            return false;
-                        }
-                    });
-
-
                     builder.include(marker.getPosition());
                 }
 
