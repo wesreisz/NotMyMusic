@@ -24,4 +24,6 @@ dependencies {
     wearApp project(':wear')
     compile 'com.google.android.gms:play-services:+'
     compile 'com.googlecode.jen-api:jen-api:4.x.p'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.1.+'
+    compile 'com.fasterxml.jackson.core:jackson-core:2.1.+'
 }
