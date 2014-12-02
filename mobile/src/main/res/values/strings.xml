@@ -6,5 +6,7 @@
     <string name="start_counter">Start Counter</string>
     <string name="stop_counter">Stop Counter</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="google_app_id">AIzaSyCs0P0KpCaNBqBp5ZTuraYbzkMYJMDt-FI</string>
+    <string name="facebook_app_id">304068463116966</string>
 
 </resources>

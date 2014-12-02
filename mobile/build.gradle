@@ -19,6 +19,7 @@ android {
     }
 }
 
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     wearApp project(':wear')
@@ -26,4 +27,6 @@ dependencies {
     compile 'com.googlecode.jen-api:jen-api:4.x.p'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.1.+'
     compile 'com.fasterxml.jackson.core:jackson-core:2.1.+'
+    compile 'com.facebook.android:facebook-android-sdk:+'
+    compile 'com.parse.bolts:bolts-android:+'
 }

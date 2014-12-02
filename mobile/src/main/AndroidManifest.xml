@@ -23,7 +23,10 @@
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyCs0P0KpCaNBqBp5ZTuraYbzkMYJMDt-FI" />
+            android:value="@string/google_app_id" />
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
 
         <activity
             android:name="com.wesleyreisz.notmymusic.activity.DetailActivity"
@@ -50,6 +53,10 @@
             android:label="@string/title_activity_login"
             android:theme="@style/AppThemeNoActionBar"
             >
+        </activity>
+        <activity
+            android:name="com.facebook.LoginActivity"
+            android:label="Login to Not My Music" >
         </activity>
     </application>
 
