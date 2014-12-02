@@ -15,7 +15,7 @@ import com.wesleyreisz.notmymusic.fragment.MoreSongsFragment;
 import com.wesleyreisz.notmymusic.listener.MyTabListener;
 
 
-public class DetailActivity extends Activity {
+public class DetailActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

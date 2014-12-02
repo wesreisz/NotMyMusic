@@ -20,6 +20,7 @@ public class ArtistServiceTest extends TestCase {
             Artist artist = artistService.findArtistIdByKeywords(keywords[0]);
             assertNotNull(artist);
             assertEquals("ARSZIBW1187B994053", artist.getID());
+
             List<Biography> bios = artist.getBiographies();
             assertNotNull(bios);
             if(bios.size()>=1){

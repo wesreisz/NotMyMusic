@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class SongGridActivity extends Activity {
+public class SongGridActivity extends BaseActivity {
 
     public static final String MESSAGE_KEY = "message";
 

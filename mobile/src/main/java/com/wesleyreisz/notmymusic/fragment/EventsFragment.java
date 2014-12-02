@@ -64,6 +64,7 @@ public class EventsFragment extends Fragment {
                 e.printStackTrace();
             }
 
+
             new ListEventsAsyncTask(getActivity()).execute(
                     String.format(Constants.FIND_EVENTS_BY_ARTIST_URL,encode_url)
             );
