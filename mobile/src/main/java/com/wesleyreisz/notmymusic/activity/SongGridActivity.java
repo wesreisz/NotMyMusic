@@ -22,6 +22,7 @@ import com.wesleyreisz.notmymusic.fragment.SearchFragment;
 import com.wesleyreisz.notmymusic.listener.MyTabListener;
 import com.wesleyreisz.notmymusic.model.ArtistCache;
 import com.wesleyreisz.notmymusic.model.Song;
+import com.wesleyreisz.notmymusic.util.AuthUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -62,9 +63,14 @@ public class SongGridActivity extends BaseActivity {
             case R.id.action_settings: settings(); return true;
             case R.id.action_refresh: refresh(); return true;
             case android.R.id.home: home(); return true;
+            case R.id.action_logout: logout(); return true;
 
             default : return false;
         }
+    }
+
+    private void logout() {
+        AuthUtil.logoutUser(this);
     }
 
     private void refresh() {

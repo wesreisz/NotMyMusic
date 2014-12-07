@@ -8,11 +8,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.wesleyreisz.notmymusic.GlobalState;
 import com.wesleyreisz.notmymusic.R;
 import com.wesleyreisz.notmymusic.fragment.DetailsFragment;
 import com.wesleyreisz.notmymusic.fragment.EventsFragment;
 import com.wesleyreisz.notmymusic.fragment.MoreSongsFragment;
+import com.wesleyreisz.notmymusic.fragment.MusicGridFragment;
 import com.wesleyreisz.notmymusic.listener.MyTabListener;
+import com.wesleyreisz.notmymusic.model.ArtistCache;
+import com.wesleyreisz.notmymusic.model.Song;
+import com.wesleyreisz.notmymusic.util.AuthUtil;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class DetailActivity extends BaseActivity {
@@ -53,13 +61,28 @@ public class DetailActivity extends BaseActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+
         switch (id){
             case R.id.action_settings: settings(); return true;
             case android.R.id.home: NavUtils.navigateUpFromSameTask(this); return true;
+            case R.id.action_logout: logout(); return true;
+
             default : return false;
         }
+    }
 
-        //return super.onOptionsItemSelected(item);
+    private void refresh() {
+        GlobalState globalState = GlobalState.getInstance();
+        globalState.setSongList(new ArrayList<Song>());
+        globalState.setArtistMap(new HashMap<String, ArtistCache>());
+
+        getFragmentManager().beginTransaction()
+                .replace(R.id.container, new MusicGridFragment())
+                .commit();
+    }
+
+    private void logout() {
+        AuthUtil.logoutUser(this);
     }
 
     private void settings() {
