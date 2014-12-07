@@ -1,9 +1,12 @@
 package com.wesleyreisz.notmymusic.fragment;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +24,7 @@ import com.wesleyreisz.notmymusic.adapter.SongGridViewAdapter;
 import com.wesleyreisz.notmymusic.model.Song;
 import com.wesleyreisz.notmymusic.util.HttpUtil;
 import com.wesleyreisz.notmymusic.util.SongUtil;
+import com.wesleyreisz.notmymusic.util.StringUtil;
 
 import java.util.List;
 
@@ -55,7 +59,9 @@ public class MusicGridFragment extends Fragment {
 
         if (globalState.getSongList().size()<=0) {
             Log.d(TAG, Constants.GETTING_ITUNES_MESSAGE);
-            new GetITunesTopTenAsyncTask().execute(Constants.HTTPS_ITUNES_APPLE_COM_US_RSS_TOPSONGS);
+            SharedPreferences sp =  PreferenceManager.getDefaultSharedPreferences(getActivity());
+            String url = StringUtil.buildTopTenListUrl(Constants.HTTPS_ITUNES_APPLE_COM_US_RSS_TOPSONGS, sp.getString("numberOfItems", "10"));
+            new GetITunesTopTenAsyncTask().execute(url);
         }else{
             populateGridView(globalState.getSongList());
         }

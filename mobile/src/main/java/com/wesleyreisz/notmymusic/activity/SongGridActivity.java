@@ -5,6 +5,7 @@ import android.app.ActionBar;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceActivity;
 import android.support.v4.app.NavUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -91,7 +92,7 @@ public class SongGridActivity extends BaseActivity {
 
 
     private void settings() {
-        Toast toast = Toast.makeText(this, "Settings", Toast.LENGTH_SHORT);
-        toast.show();
+        Intent prefIntent = new Intent(this,NotMyMusicPreferenceActivity.class);
+        startActivity(prefIntent);
     }
 }
