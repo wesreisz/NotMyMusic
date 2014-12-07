@@ -17,6 +17,7 @@ import com.parse.ParseFacebookUtils;
 import com.parse.ParseUser;
 import com.wesleyreisz.notmymusic.Constants;
 import com.wesleyreisz.notmymusic.R;
+import com.wesleyreisz.notmymusic.util.AuthUtil;
 
 public class LoginActivity extends Activity {
     private static final String TAG = "LOGIN SONG";
@@ -56,9 +57,7 @@ public class LoginActivity extends Activity {
                     }
                 });
                 */
-                SharedPreferences sharedPreferences = getSharedPreferences(Constants.PREFS_NAME, 0);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString(Constants.LOGIN_FIELD, "wes");
+                AuthUtil.loginUser(LoginActivity.this, "wes");
                 finish();
             }
         });
